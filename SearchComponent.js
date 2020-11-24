@@ -10,7 +10,7 @@ import Loader from './Loader'
 
 class SearchComponent extends React.Component {
   state = {
-    units: '',
+    // units: '',
     unitError: '',
     timeOut: false
   }
@@ -26,7 +26,8 @@ onSearchSubmit = async (term) => {
       this.setState({unitsError : 'error'})
     } else {
       this.setState({unitsError : ''})
-      this.setState({units : response.data[0]})
+      //this.setState({units : response.data[0]})
+      this.props.onChangeUnit(response.data[0]);
     }  
 
     this.setState({timeOut:false})
@@ -54,7 +55,7 @@ onUnitSubmit = (name, location, size) => {
 
 render() {
   return (
-    <div  className="ui container" style={{marginTop : '10px' }}>
+    <div className="ui container" style={{marginTop : '10px' }}>
       {/* <Header /> */}
       {this.state.unitsError === 'error' ? null :<Search onSubmit={this.onSearchSubmit}/>}
       {/* {this.state.units === '' || this.state.unitsError === 'error' ? null : <Units unit={this.state.units} />} */}
