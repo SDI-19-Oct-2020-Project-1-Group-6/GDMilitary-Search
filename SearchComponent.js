@@ -9,28 +9,31 @@ import Loader from './Loader'
 
 
 class SearchComponent extends React.Component {
-  state = {
+  constructor(props) {
+    super(props)
+    this.state = {
     // units: '',
     unitError: '',
     timeOut: false
+    }
   }
-
 onSearchSubmit = async (term) => {
 
   const response = await axios.get(`http://localhost:3010/units/${term}` , {
     
   })
-     console.log(response.data[0])
+    this.setState({timeOut:false})
+    console.log(response.data[0])
     if (response.data[0] === undefined) {
       
       this.setState({unitsError : 'error'})
     } else {
       this.setState({unitsError : ''})
       //this.setState({units : response.data[0]})
-      this.props.onChangeUnit(response.data[0]);
+      this.props.onChangeUnit(response.data[0].name);
     }  
 
-    this.setState({timeOut:false})
+    
 }
 
 onUnitSubmit = (name, location, size) => {
