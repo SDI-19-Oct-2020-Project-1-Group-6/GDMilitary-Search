@@ -24,4 +24,4 @@ RUN npm install
 
 
 # How do you start your app?
-CMD ["npm" , "start"]
+CMD [ "npm", "start" ]
