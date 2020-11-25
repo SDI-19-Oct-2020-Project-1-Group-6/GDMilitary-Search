@@ -43,7 +43,7 @@ onUnitSubmit = (name, location, size) => {
             size : size
         })
         .then((response) => {
-          this.onSearchSubmit(response.data)
+          this.onSearchSubmit(name)
           })
         .catch((error) => console.log(error))
         this.setState({timeOut:true})
